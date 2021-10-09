@@ -1,5 +1,5 @@
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
-import { ElementsPage, Textbox } from '../page-objects/elements_po'
+import { ElementsPage, Textbox } from '../../page-objects/elements_po'
 
 const elements = new ElementsPage()
 const textBox = new Textbox()
@@ -11,8 +11,8 @@ Given('I am at the elements page', () => {
 Then('I should be able to see the Elements in the header', () => {
   elements.getHeaderValue()
 })
-When('I navigate to and select {string} from the page menu list', (ElementsMenu) => {
-  textBox.clickTextboxFromMenuList(ElementsMenu)
+When('I navigate to and select {string} from the page menu list', (MenuName) => {
+  elements.clickTextboxFromMenuList(MenuName)
 })
 And('I enter {string} value on the Full Name text field', (FullName) => {
   name = FullName.toString()

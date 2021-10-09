@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
-import { Homepage } from '..//page-objects/homepage_po'
+import { Homepage } from '../../page-objects/homepage_po'
 
 const homepage = new Homepage()
 
