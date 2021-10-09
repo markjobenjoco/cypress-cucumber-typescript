@@ -8,19 +8,24 @@ export class ElementsPage {
 }
 export class Textbox {
   clickTextboxFromMenuList(value) {
+    if (!value) throw new Error('Arguments pass should not be empty!')
     cy.get('.element-list').as('elementsGroup').invoke('attr', 'class').should('contain', 'show')
     return cy.get('@elementsGroup').find('.btn-light').contains(value.toString()).click()
   }
   enterFullName(name) {
+    if (!name) throw new Error('Arguments pass should not be empty!')
     return cy.get('#userName').type(name)
   }
   enterEmail(email) {
+    if (!email) throw new Error('Arguments pass should not be empty!')
     return cy.get('#userEmail').type(email)
   }
   enterCurrentAddress(address) {
+    if (!address) throw new Error('Arguments pass should not be empty!')
     return cy.get('#currentAddress').type(address)
   }
   enterPermanentAddress(address) {
+    if (!address) throw new Error('Arguments pass should not be empty!')
     return cy.get('#permanentAddress').type(address)
   }
   clickSubmitButton() {

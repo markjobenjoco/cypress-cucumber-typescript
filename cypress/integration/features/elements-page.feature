@@ -13,4 +13,5 @@ Feature: Elements page challenges
 
         Examples:
             | ElementsMenu | FullName  | Email          | CurrentAddress | PermanentAddress           |
+            | Text Box     |           | test@gmail.com | Makati City    | Bongabong Oriental Mindoro |
             | Text Box     | Test Name | test@gmail.com | Makati City    | Bongabong Oriental Mindoro |
