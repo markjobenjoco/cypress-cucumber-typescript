@@ -5,13 +5,13 @@ export class ElementsPage {
   getHeaderValue() {
     return cy.get('.main-header').invoke('text').should('contain', 'Elements')
   }
-}
-export class Textbox {
   clickTextboxFromMenuList(value) {
     if (!value) throw new Error('Arguments pass should not be empty!')
     cy.get('.element-list').as('elementsGroup').invoke('attr', 'class').should('contain', 'show')
     return cy.get('@elementsGroup').find('.btn-light').contains(value.toString()).click()
   }
+}
+export class Textbox {
   enterFullName(name) {
     if (!name) throw new Error('Arguments pass should not be empty!')
     return cy.get('#userName').type(name)
