@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://demoqa.com/",
+  "watchForFileChanges": true,
+  "chromeWebSecurity": false,
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "record": false,
+  "experimentalStudio": true,
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "ignoreTestFiles": ["**/1-getting-started/*.js", "**/2-advanced-examples/*.js"],
+  "testFiles": "**/*.feature"
+}
