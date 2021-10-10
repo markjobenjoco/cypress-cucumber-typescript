@@ -10,10 +10,13 @@
   "author": "markjobenjoco@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
     "cypress": "^7.7.0",
-    "cypress-cucumber-preprocessor": "^4.3.0"
+    "cypress-cucumber-preprocessor": "^4.3.0",
+    "tsify": "^5.0.4",
+    "typescript": "^4.4.3"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": false
+    "nonGlobalStepDefinitions": true
   }
 }

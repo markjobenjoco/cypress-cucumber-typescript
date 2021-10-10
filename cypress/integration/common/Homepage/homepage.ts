@@ -1,12 +1,12 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
-import { Homepage } from '../../page-objects/homepage_po'
+import { Homepage } from '../../../support/page-objects/homepage_po'
 
 const homepage = new Homepage()
 
 Given('I visit the ToolsQA demo page', () => {
   homepage.openMainpage()
 })
-Then('I see {string} in the title', (pageTitle) => {
+Then('I see {string} in the title', (pageTitle: string) => {
   homepage.getTitle(pageTitle)
 })
 Then('I see the header in the page', () => {
@@ -19,9 +19,9 @@ Then('I see the banner in the mainpage', () => {
 Given('I am at the mainpage of ToolsQA.com', () => {
   homepage.openMainpage()
 })
-When('I click the {string} category', (challenge) => {
+When('I click the {string} category', (challenge: string) => {
   homepage.openChallengePage(challenge)
 })
-Then('I want to see the {string} in the header', (headerName) => {
+Then('I want to see the {string} in the header', (headerName: string) => {
   homepage.getHeaderName(headerName)
 })
