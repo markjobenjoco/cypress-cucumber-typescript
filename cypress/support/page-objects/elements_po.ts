@@ -1,10 +1,5 @@
-interface Person {
-  name: string
-  email: string
-  address1: string
-  address2: string
-}
-export class ElementsPage {
+import { Person } from '../interfaces/elements'
+class ElementsPage {
   visitElementsPage() {
     return cy.visit('/elements')
   }
@@ -18,7 +13,7 @@ export class ElementsPage {
   }
 }
 
-export class Textbox {
+class Textbox {
   enterFullName(name: string) {
     if (!name) throw new Error('Arguments pass should not be empty!')
     return cy.get('#userName').type(name)
@@ -51,7 +46,7 @@ export class Textbox {
   }
 }
 
-export class Checkbox {
+class Checkbox {
   clickOnExpandButton() {
     return cy.get('.rct-option-expand-all').click()
   }
@@ -66,7 +61,7 @@ export class Checkbox {
   }
 }
 
-export class RadioButtons {
+class RadioButtons {
   verifyHeaderValue() {
     return cy.get('.main-header').should('contain', 'Radio Button')
   }
@@ -94,3 +89,8 @@ export class RadioButtons {
     return cy.get('.mt-3').should('not.exist')
   }
 }
+
+export const elementsPage = new ElementsPage()
+export const txtBox = new Textbox()
+export const chkBox = new Checkbox()
+export const rdoButtons = new RadioButtons()

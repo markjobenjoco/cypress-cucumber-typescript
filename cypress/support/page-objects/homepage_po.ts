@@ -1,4 +1,4 @@
-export class Homepage {
+class Homepage {
   openMainpage() {
     return cy.visit('/')
   }
@@ -18,3 +18,4 @@ export class Homepage {
     return cy.get('.main-header').invoke('text').should('eq', header)
   }
 }
+export const homepage = new Homepage()

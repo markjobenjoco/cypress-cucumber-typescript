@@ -4,6 +4,7 @@
   "chromeWebSecurity": false,
   "viewportHeight": 1080,
   "viewportWidth": 1920,
+  "video": false,
   "record": false,
   "experimentalStudio": true,
   "retries": {

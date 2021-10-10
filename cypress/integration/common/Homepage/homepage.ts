@@ -1,7 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
-import { Homepage } from '../../../support/page-objects/homepage_po'
-
-const homepage = new Homepage()
+import { homepage } from '..//..//..//support/page-objects/homepage_po'
 
 Given('I visit the ToolsQA demo page', () => {
   homepage.openMainpage()
