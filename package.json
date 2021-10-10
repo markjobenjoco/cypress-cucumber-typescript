@@ -4,7 +4,8 @@
   "description": "Automation project using Cypress and Cucumber",
   "main": "index.js",
   "scripts": {
-    "cy:open": "npx cypress open"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
   },
   "author": "markjobenjoco@gmail.com",
   "license": "ISC",
