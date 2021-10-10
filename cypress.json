@@ -4,11 +4,12 @@
   "chromeWebSecurity": false,
   "viewportHeight": 1080,
   "viewportWidth": 1920,
+  "video": false,
   "record": false,
   "experimentalStudio": true,
   "retries": {
     "runMode": 2,
     "openMode": 0
   },
-  "testFiles": "**/*.feature"
+  "testFiles": "**/*.{feature,features}"
 }
