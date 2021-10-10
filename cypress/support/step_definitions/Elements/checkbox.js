@@ -1,7 +1,8 @@
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
-import { ElementsPage } from '../../page-objects/elements_po'
+import { ElementsPage, Checkbox } from '../../page-objects/elements_po'
 
 const elements = new ElementsPage()
+const chk = new Checkbox()
 
 Given('I am at the elements page', () => {
   elements.visitElementsPage()
@@ -13,14 +14,14 @@ When('I navigate to and select {string} from the page menu list', (MenuName) => 
   elements.clickTextboxFromMenuList(MenuName)
 })
 And('I click the expand button', () => {
-  cy.get('.rct-option-expand-all').click()
+  chk.clickOnExpandButton()
 })
 Then('I should be able to see all the options list', () => {
-  cy.get('.rct-text').its('length').should('eq', 17)
+  chk.verifyListLength(17)
 })
 And('I click the {string} checkbox from the list', (FieldName) => {
-  cy.get('.rct-text').contains(FieldName).as('checkField').click()
+  chk.clickRdoOption(FieldName.toString())
 })
 Then('It should be checked', () => {
-  cy.get('@checkField').find('.rct-checkbox > .rct-icon').invoke('attr', 'class').should('contain', 'rct-icon-check')
+  chk.isChecked()
 })

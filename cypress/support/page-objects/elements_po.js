@@ -43,3 +43,47 @@ export class Textbox {
       })
   }
 }
+
+export class Checkbox {
+  clickOnExpandButton() {
+    return cy.get('.rct-option-expand-all').click()
+  }
+  verifyListLength(x) {
+    return cy.get('.rct-text').its('length').should('eq', x)
+  }
+  clickRdoOption(value) {
+    return cy.get('.rct-text').contains(value).as('checkField').click()
+  }
+  isChecked() {
+    return cy.get('@checkField').find('.rct-checkbox > .rct-icon').invoke('attr', 'class').should('contain', 'rct-icon-check')
+  }
+}
+
+export class RadioButtons {
+  verifyHeaderValue() {
+    return cy.get('.main-header').should('contain', 'Radio Button')
+  }
+  clickOnEnabledRadioButton(value) {
+    return cy.get('.custom-radio').not('.disabled').contains(value).as('enabledRdoBtn').click()
+  }
+  verifyRadioButtonIsChecked() {
+    return cy.get('@enabledRdoBtn').prev().should('be.checked')
+  }
+  verifyOutput() {
+    return cy
+      .get('@enabledRdoBtn')
+      .invoke('text')
+      .then((txt) => {
+        cy.get('.mt-3').should('contain', txt)
+      })
+  }
+  clickOnDisabledRadioButton(value) {
+    return cy.get('.custom-radio').filter('.disabled').contains(value).as('disabledRdoBtn').click()
+  }
+  verifyRadioButtonIsUnchecked() {
+    return cy.get('@disabledRdoBtn').prev().should('not.be.checked')
+  }
+  verifyOutputNotExist() {
+    return cy.get('.mt-3').should('not.exist')
+  }
+}
