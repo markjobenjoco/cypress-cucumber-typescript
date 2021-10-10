@@ -3,3 +3,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // failing the test
   return false
 })
+Cypress.Server.defaults({
+  ignore: (xhr) => true
+})
