@@ -1,5 +1,5 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps'
-import { elementsPage, rdoButtons } from '..//..//..//support/page-objects/elements_po'
+import { elementsPage, rdoButtons } from '../../support/page-objects/elements_po'
 
 // As a user, I should be able to click enabled radio button
 Given('I am at the elements page', () => {

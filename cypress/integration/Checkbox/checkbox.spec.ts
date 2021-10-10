@@ -1,5 +1,5 @@
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
-import { elementsPage, chkBox } from '..//..//..//support/page-objects/elements_po'
+import { elementsPage, chkBox } from '../../support/page-objects/elements_po'
 
 Given('I am at the elements page', () => {
   elementsPage.visitElementsPage()

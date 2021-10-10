@@ -11,5 +11,5 @@
     "runMode": 2,
     "openMode": 0
   },
-  "testFiles": "**/*.{feature,features}"
+  "testFiles": "**/*.feature"
 }

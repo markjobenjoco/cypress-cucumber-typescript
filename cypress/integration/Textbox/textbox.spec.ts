@@ -1,5 +1,5 @@
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
-import { elementsPage, txtBox } from '..//..//..//support/page-objects/elements_po'
+import { elementsPage, txtBox } from '../../support/page-objects/elements_po'
 
 let name: string, email: string, address1: string, address2: string
 
