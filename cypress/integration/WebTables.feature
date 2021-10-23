@@ -1,4 +1,4 @@
-Feature: Automate Web Tables
+Feature: Web Tables
 
     Creating new user.
     Updating existing user.
@@ -25,4 +25,16 @@ Feature: Automate Web Tables
         Examples:
             | First Name | Last Name | Email          | Age | Salary | Department |
             | Test Name  | De Guzman | test@gmail.com | 23  | 67000  | QA         |
-# | Test Name  | De Guzman | test@gmail.com | 23.5 | 67000  | QA         |
+    # | Test Name  | De Guzman | test@gmail.com | 23.5 | 67000  | QA         |
+
+    Scenario Outline: Update old user
+        When I look for the Email column
+        And that has a value of "<Email>"
+        And I click the edit button
+        Then I should see Registration Form modal
+        When I enter "<Value>" on the "<Field Name>" text field
+        And I click the Submit button
+        Then I should see the updated value in the web table
+        Examples:
+            | Email             | Value               | Field Name |
+            | alden@example.com | cierra2@example.com | Email      |
