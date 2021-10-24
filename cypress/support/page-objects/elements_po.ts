@@ -146,16 +146,23 @@ class WebTables {
   enterDepartment(value: string) {
     return field('department').type(value)
   }
-  findSelectedRow(email: string, fieldName: string) {
-    let found = false
+  /**
+   *
+   * @param value is the value to find in the table
+   * @param columnName is the name of the column
+   *
+   */
+  findUserDetails(email: string, columnName: string) {
+    let found: boolean = false
     const headers: string[] = []
     cy.get('.rt-resizable-header-content', quiet).each(($el: JQuery<HTMLElement>) => {
       headers.push($el.text())
     })
+    cy.get('.rt-tr-group').its('length').as('tableRows')
     const it = (index: number) => {
       cy.wrap(headers).then((header) => {
         cy.get(`.rt-tr-group:nth-of-type(${index}) .rt-td`)
-          .eq(header.indexOf(fieldName))
+          .eq(header.indexOf(columnName))
           .as('currentRow')
           .invoke('text')
           .then((value) => {
@@ -172,7 +179,7 @@ class WebTables {
     }
     it(1)
   }
-  findInPage(fieldName: string, valueToFind: string) {
+  findInTable(fieldName: string, valueToFind: string) {
     let found = false
     const headers: string[] = []
     cy.get('.rt-resizable-header-content', quiet).each(($el: JQuery<HTMLElement>) => {
@@ -198,6 +205,21 @@ class WebTables {
     }
     findInCurrentTable(1)
   }
+  clickOnDeleteButton() {
+    cy.get('@currentRow').closest('.rt-tr-group').find('span[title="Delete"]').click()
+  }
+  verifyItemIsDeleted(value: string) {
+    // Comment out, will used different approach
+    // let found = false
+    // cy.contains('div[class="rt-th rt-resizable-header -cursor-pointer"]', columnName).invoke('index').as('columnIndex')
+    // const iterater = (index: number) => {
+    //   cy.get('@columnIndex').then((colIndex) => {
+    //     cy.get(`.rt-tr-group:nth-of-type(${index}) .rt-td`).eq(parseInt(colIndex.toString()))
+    //   })
+    // }
+    // iterater(1)
+    cy.get('[role="gridcell"]').contains(value).should('not.exist')
+  }
 }
 
 export const elementsPage = new ElementsPage()
@@ -205,3 +227,14 @@ export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
 export const rdoButtons = new RadioButtons()
 export const webTable = new WebTables()
+
+const getHeaders = () => {
+  const headers: string[] = []
+  cy.get('.rt-resizable-header-content', quiet).each(($el: JQuery<HTMLElement>) => {
+    headers.push($el.text())
+  })
+  return cy.wrap(headers)
+}
+const tableRows = () => {
+  return cy.get('.rt-tr-group').its('length')
+}

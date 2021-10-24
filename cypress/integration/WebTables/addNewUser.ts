@@ -49,10 +49,10 @@ And('I enter {string} on the Department text field', (department: string) => {
 })
 
 Then('It should display on the web table', () => {
-  webTable.findInPage('First Name', _firstName)
+  webTable.findInTable('First Name', _firstName)
   // findInPage('Last Name', _lastName)
   // findInPage('Email', _email)
   // findInPage('Age', _age)
   // findInPage('Salary', _salary)
-  webTable.findInPage('Department', 'Insurance')
+  webTable.findInTable('Department', 'Insurance')
 })

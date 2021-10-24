@@ -10,7 +10,7 @@ And('that has a value of {string}', (email: string) => {
   _email = email
   const fieldName: string = 'Email'
 
-  webTable.findSelectedRow(email, fieldName)
+  webTable.findUserDetails(email, fieldName)
 })
 And('I click the edit button', () => {
   webTable.clickEditButton()
