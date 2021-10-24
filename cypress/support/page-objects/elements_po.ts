@@ -222,11 +222,39 @@ class WebTables {
   }
 }
 
+class Buttons {
+  openPage() {
+    return cy.visit('/buttons')
+  }
+  clickOnDoubleClickBtn() {
+    return cy.get('#doubleClickBtn').dblclick()
+  }
+  verifyDoubleClickBtnOuput(message: string) {
+    return cy.get('#doubleClickMessage').should('contain', message)
+  }
+  clickOnRightClickBtn() {
+    return cy.get('#rightClickBtn').rightclick()
+  }
+  verifyRightClickBtnOutput(message: string) {
+    return cy.get('#rightClickMessage').should('contain', message)
+  }
+  clickOnDynamicBtn() {
+    return cy
+      .get('[type="button"]')
+      .contains(/^Click Me$/)
+      .click()
+  }
+  verifyDynamicBtnOutput(message: string) {
+    return cy.get('#dynamicClickMessage').should('contain', message)
+  }
+}
+
 export const elementsPage = new ElementsPage()
 export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
 export const rdoButtons = new RadioButtons()
 export const webTable = new WebTables()
+export const buttons = new Buttons()
 
 const getHeaders = () => {
   const headers: string[] = []
