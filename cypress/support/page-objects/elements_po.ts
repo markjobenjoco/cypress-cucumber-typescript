@@ -249,12 +249,37 @@ class Buttons {
   }
 }
 
+class Links {
+  openPage() {
+    cy.visit('https://demoqa.com/links')
+  }
+  getHeaderValue() {
+    return cy.get('.main-header').invoke('text')
+  }
+  getUrl() {
+    return cy.url()
+  }
+  clickOnStaticLink() {
+    return cy.get('#simpleLink').invoke('removeAttr', 'target').click()
+  }
+  clickOnDynamicLink() {
+    return cy.get('#dynamicLink').invoke('removeAttr', 'target').click()
+  }
+  getAPILink(name: string) {
+    return cy.contains('#linkWrapper a', name)
+  }
+  returnOutput() {
+    return cy.get('#linkResponse').invoke('text')
+  }
+}
+
 export const elementsPage = new ElementsPage()
 export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
 export const rdoButtons = new RadioButtons()
 export const webTable = new WebTables()
 export const buttons = new Buttons()
+export const links = new Links()
 
 const getHeaders = () => {
   const headers: string[] = []
