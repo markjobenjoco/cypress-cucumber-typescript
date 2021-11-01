@@ -253,12 +253,6 @@ class Links {
   openPage() {
     cy.visit('https://demoqa.com/links')
   }
-  getHeaderValue() {
-    return cy.get('.main-header').invoke('text')
-  }
-  getUrl() {
-    return cy.url()
-  }
   clickOnStaticLink() {
     return cy.get('#simpleLink').invoke('removeAttr', 'target').click()
   }
@@ -273,6 +267,24 @@ class Links {
   }
 }
 
+class BrokenLinksImages {
+  openPage() {
+    cy.visit('https://demoqa.com/broken')
+  }
+  getValidImage() {
+    return cy.contains('div > p', 'Valid image').next()
+  }
+  getBrokenImage() {
+    return cy.contains('div > p', 'Broken image').next()
+  }
+  clickOnValidLink() {
+    return cy.contains('div > p', 'Valid Link').next()
+  }
+  clickOnBrokenLink() {
+    return cy.contains('div > p', 'Broken Link').next()
+  }
+}
+
 export const elementsPage = new ElementsPage()
 export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
@@ -280,6 +292,7 @@ export const rdoButtons = new RadioButtons()
 export const webTable = new WebTables()
 export const buttons = new Buttons()
 export const links = new Links()
+export const brokenLinksImages = new BrokenLinksImages()
 
 const getHeaders = () => {
   const headers: string[] = []
