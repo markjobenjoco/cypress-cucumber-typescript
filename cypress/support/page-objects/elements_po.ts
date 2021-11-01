@@ -6,9 +6,6 @@ class ElementsPage {
   visitElementsPage() {
     return cy.visit('/elements')
   }
-  getHeaderValue() {
-    return cy.get('.main-header').invoke('text').should('contain', 'Elements')
-  }
   clickTextboxFromMenuList(value: string) {
     if (!value) throw new Error('Arguments pass should not be empty!')
     cy.get('.element-list').as('elementsGroup').invoke('attr', 'class').should('contain', 'show')
