@@ -5,7 +5,7 @@ Given('I am at the elements page', () => {
   elementsPage.visitElementsPage()
 })
 Then('I should be able to see the Elements in the header', () => {
-  elementsPage.getHeaderValue()
+  cy.getHeaderValue().should('contain', 'Elements')
 })
 When('I navigate to and select {string} from the page menu list', (pageName: string) => {
   elementsPage.clickTextboxFromMenuList(pageName)
