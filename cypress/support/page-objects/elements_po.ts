@@ -282,6 +282,11 @@ class BrokenLinksImages {
   }
 }
 
+class DynamicProperties {
+  openDynamicPropertiesPage = () => cy.visit('https://demoqa.com/dynamic-properties')
+  getButtonById = (idName: string) => cy.get(`button#${idName}`)
+}
+
 export const elementsPage = new ElementsPage()
 export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
@@ -290,6 +295,7 @@ export const webTable = new WebTables()
 export const buttons = new Buttons()
 export const links = new Links()
 export const brokenLinksImages = new BrokenLinksImages()
+export const dp = new DynamicProperties()
 
 const getHeaders = () => {
   const headers: string[] = []
