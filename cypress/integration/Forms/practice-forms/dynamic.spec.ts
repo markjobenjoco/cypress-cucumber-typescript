@@ -16,25 +16,45 @@ let _firstName: string,
   _state: string,
   _city: string
 
+When('I enter the students {string} on the First Name field', (fName: string) => {
+  _firstName = fName
+  forms.enterFirstName(_firstName)
+})
 When('I enter a random first name', () => {
   _firstName = faker.name.firstName()
   forms.enterFirstName(_firstName)
+})
+And('I enter the students {string} on the Last Name field', (lName: string) => {
+  _lastName = lName
+  forms.enterLastName(_lastName)
 })
 And('I enter a random last name', () => {
   _lastName = faker.name.lastName()
   forms.enterLastName(_lastName)
 })
+And('I enter the students {string} on the Email field', (email: string) => {
+  _email = email
+  forms.enterEmail(email)
+})
 And('I enter a random email', () => {
   _email = faker.internet.email()
   forms.enterEmail(_email)
 })
-And('I select gender {string}', (gender: string) => {
+And('I select the students gender {string} from the Gender selection', (gender: string) => {
   _gender = gender
   forms.selectGender(_gender)
+})
+And('I enter the students {string} on the Mobile Number field', (contactNumber: string) => {
+  _phoneNumber = contactNumber
+  forms.enterPhoneNumber(contactNumber)
 })
 And('I enter a random phone number', () => {
   _phoneNumber = faker.phone.phoneNumber('0912345678')
   forms.enterPhoneNumber(_phoneNumber)
+})
+And('I enter the students {string} on the Date of Birth field', (bDay: string) => {
+  _birthDay = bDay
+  forms.enterDateOfBirth(_birthDay)
 })
 And('I enter a random date of birth', () => {
   _birthDay = faker.date.past().toString()
@@ -57,11 +77,15 @@ And('I upload the students Photo {string}', (imgName) => {
     forms.uploadFile(_img, img)
   })
 })
+And('I enter the students {string} on the Current Address field', (address: string) => {
+  _address = address
+  forms.enterAddress(_address)
+})
 And('I enter a random address', () => {
   _address = `${faker.address.streetName()} ${faker.address.city()} ${faker.address.country()} ${faker.address.zipCode()}`
   forms.enterAddress(_address)
 })
-And('I choose the students {string} and {string}', (state: string, city: string) => {
+And('I choose the students state {string} and city {string}', (state: string, city: string) => {
   _state = state
   _city = city
   forms.selectState(_state)

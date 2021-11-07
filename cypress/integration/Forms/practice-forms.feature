@@ -11,27 +11,27 @@ Feature: Forms - Practice Forms
         When I enter the students "<First Name>" on the First Name field
         And I enter the students "<Last Name>" on the Last Name field
         And I enter the students "<Email>" on the Email field
-        And I select the students "<Gender>" from the Gender selection
+        And I select the students gender "<Gender>" from the Gender selection
         And I enter the students "<Mobile Number>" on the Mobile Number field
         And I enter the students "<Date of Birth>" on the Date of Birth field
-        And I search for this "<Subject>" and select this "<Subject Name>" from the result bar
-        And I select the students "<Hobbies>" from the Hobbies selection
-        And I upload the students "<Photo>"
+        And I search for "<Subject>" and select "<Subject Name>" from the result bar
+        And I select the students hobby "<Hobbies>"
+        And I upload the students Photo "<Photo>"
         And I enter the students "<Current Address>" on the Current Address field
-        And I choose and select the students "<State>" and "<City>"
+        And I choose the students state "<State>" and city "<City>"
         And I click the submit button
         Then A modal should be displayed
         And It should have a title of "Thanks for submitting the form"
-        And Verify the Student Name value
-        And Verify the Student Email value
-        And Verify the Student Gender value
-        And Verify the Student Mobile number value
-        And Verify the Student Date of Birth value
-        And Verify the Student Subjects value
-        And Verify the Student Hobbies value
-        And Verify the Student Picture value
-        And Verify the Student Address value
-        And Verify the Student State and City value
+        And Verify the Student Name
+        And Verify the Student Email
+        And Verify the Student Gender
+        And Verify the Student Mobile number
+        And Verify the Student Date of Birth
+        And Verify the Student Subjects
+        And Verify the Student Hobbies
+        And Verify the Student Picture
+        And Verify the Student Address
+        And Verify the Student State and City
         When I click the close button
         Then Modal should be closed
 
@@ -44,14 +44,14 @@ Feature: Forms - Practice Forms
         When I enter a random first name
         And I enter a random last name
         And I enter a random email
-        And I select gender "Female"
+        And I select the students gender "Female" from the Gender selection
         And I enter a random phone number
         And I enter a random date of birth
         And I search for "Computer" and select "Computer Science" from the result bar
         And I select the students hobby "Sports"
         And I upload the students Photo "img-002.png"
         And I enter a random address
-        And I choose the students "Rajasthan" and "Jaiselmer"
+        And I choose the students state "Rajasthan" and city "Jaiselmer"
         And I click the submit button
         Then A modal should be displayed
         And It should have a title of "Thanks for submitting the form"
