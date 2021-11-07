@@ -248,7 +248,7 @@ class Buttons {
 
 class Links {
   openPage() {
-    cy.visit('https://demoqa.com/links')
+    cy.visit('/links')
   }
   clickOnStaticLink() {
     return cy.get('#simpleLink').invoke('removeAttr', 'target').click()
@@ -266,7 +266,7 @@ class Links {
 
 class BrokenLinksImages {
   openPage() {
-    cy.visit('https://demoqa.com/broken')
+    cy.visit('/broken')
   }
   getValidImage() {
     return cy.contains('div > p', 'Valid image').next()
@@ -283,7 +283,7 @@ class BrokenLinksImages {
 }
 
 class DynamicProperties {
-  openDynamicPropertiesPage = () => cy.visit('https://demoqa.com/dynamic-properties')
+  openDynamicPropertiesPage = () => cy.visit('/dynamic-properties')
   getButtonById = (idName: string) => cy.get(`button#${idName}`)
 }
 
