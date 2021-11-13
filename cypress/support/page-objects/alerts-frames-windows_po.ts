@@ -1,5 +1,5 @@
 class IFrames {
-  openIframePage = () => cy.visit('https://demoqa.com/frames')
+  openIframePage = () => cy.visit('/frames')
   getIFrame = (iFrameValue: string) => {
     let iframe
     if (iFrameValue.includes('first')) {
@@ -16,4 +16,11 @@ class IFrames {
   }
 }
 
+class NestedIFrames {
+  openPage = () => cy.visit('/nestedframes')
+  parentIFrame = () => cy.get('#frame1').then((parent) => parent.contents().find('body'))
+  childIframe = () => this.parentIFrame().then((parent) => parent.find('iframe').contents().find('body'))
+}
+
 export const iframes = new IFrames()
+export const nestedFrames = new NestedIFrames()
