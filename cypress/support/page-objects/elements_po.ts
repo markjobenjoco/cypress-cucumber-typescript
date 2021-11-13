@@ -287,6 +287,18 @@ class DynamicProperties {
   getButtonById = (idName: string) => cy.get(`button#${idName}`)
 }
 
+class UploadAndDownload {
+  openUploadAndDownloadPage = () => cy.visit('/upload-download')
+  downloadButton = () => cy.get('a#downloadButton')
+  uploadButton = () => cy.get('input#uploadFile')
+  donwloaded = (filename: string) => {
+    const path = require('path')
+    const donwloadFolder = Cypress.config('downloadsFolder')
+    return cy.readFile(path.join(donwloadFolder, filename), 'base64')
+  }
+  verifyUploadOutput = () => cy.get('p#uploadedFilePath')
+}
+
 export const elementsPage = new ElementsPage()
 export const txtBox = new Textbox()
 export const chkBox = new Checkbox()
@@ -296,6 +308,7 @@ export const buttons = new Buttons()
 export const links = new Links()
 export const brokenLinksImages = new BrokenLinksImages()
 export const dp = new DynamicProperties()
+export const ud = new UploadAndDownload()
 
 const getHeaders = () => {
   const headers: string[] = []
