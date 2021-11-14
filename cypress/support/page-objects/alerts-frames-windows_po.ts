@@ -22,5 +22,27 @@ class NestedIFrames {
   childIframe = () => this.parentIFrame().then((parent) => parent.find('iframe').contents().find('body'))
 }
 
+class BrowserWindows {
+  openPage = () => cy.visit('/browser-windows')
+  clickOnNewButton = () => {
+    getNewWindow('/sample').as('newTab')
+    cy.get('#tabButton').click()
+    return cy.get('@newTab')
+  }
+  clickOnNewWindow = () => {
+    getNewWindow('/sample').as('newWindow')
+    cy.get('#windowButton').click()
+    return cy.get('@newWindow')
+  }
+  verifyUrl = (text: string) => cy.url().should('contain', text)
+  verifyContent = (text: string) => cy.get('#sampleHeading').should('contain', text)
+}
 export const iframes = new IFrames()
 export const nestedFrames = new NestedIFrames()
+export const browserWindows = new BrowserWindows()
+
+const getNewWindow = (url: string) => {
+  return cy.window().then((win) => {
+    return cy.stub(win, 'open').callsFake(() => (win.location.href = url))
+  })
+}
