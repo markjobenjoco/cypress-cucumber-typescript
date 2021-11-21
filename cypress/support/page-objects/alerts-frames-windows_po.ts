@@ -37,9 +37,20 @@ class BrowserWindows {
   verifyUrl = (text: string) => cy.url().should('contain', text)
   verifyContent = (text: string) => cy.get('#sampleHeading').should('contain', text)
 }
+
+class Alerts {
+  openPage = () => cy.visit('/alerts')
+  clickOnAlertBtn = () => cy.get('button#alertButton').click()
+  clickOnTimerAlertBtn = () => cy.get('button#timerAlertButton').click()
+  clickOnConfirmBtn = () => cy.get('button#confirmButton').click()
+  verifyResult = () => cy.get('span#confirmResult')
+  clickOnPromptBtn = () => cy.get('button#promtButton').click()
+  verifyPropmtResult = () => cy.get('span#promptResult')
+}
 export const iframes = new IFrames()
 export const nestedFrames = new NestedIFrames()
 export const browserWindows = new BrowserWindows()
+export const alert = new Alerts()
 
 const getNewWindow = (url: string) => {
   return cy.window().then((win) => {
