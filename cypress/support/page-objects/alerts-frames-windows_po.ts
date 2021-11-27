@@ -47,10 +47,22 @@ class Alerts {
   clickOnPromptBtn = () => cy.get('button#promtButton').click()
   verifyPropmtResult = () => cy.get('span#promptResult')
 }
+
+class ModalDialogs {
+  openPage = () => cy.visit('/modal-dialogs')
+  clickOnSmallBtn = () => cy.get('#showSmallModal').click()
+  clickOnLargeBtn = () => cy.get('#showLargeModal').click()
+  modal = () => cy.get('.modal-content')
+  verifyModalHeader = (header: string) => this.modal().find('.modal-header').should('contain', header)
+  verifyModalBody = (text: string) => this.modal().find('.modal-body').should('contain', text)
+  clickOnSmallModalCloseBtn = () => this.modal().find('#closeSmallModal').click()
+  clickOnLargeModalCloseBtn = () => this.modal().find('#closeLargeModal').click()
+}
 export const iframes = new IFrames()
 export const nestedFrames = new NestedIFrames()
 export const browserWindows = new BrowserWindows()
 export const alert = new Alerts()
+export const md = new ModalDialogs()
 
 const getNewWindow = (url: string) => {
   return cy.window().then((win) => {
